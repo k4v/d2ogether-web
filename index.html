@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>d2ogether Dice Roller</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin ></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin ></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metamorphous:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- External CSS Files -->
+    <link href="https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Title Section -->
+    <div class="title-section">
+        <div class="title-element">
+            <img id="dice-roll-image" class="dice-image-blank" src="https://rpg.karthik.site/dice/assets/img/d20-dice-blank-100.png" >
+        </div>
+        <div class="title-element">
+            <h2>d2ogether dice roller</h2>
+        </div>
+    </div>
+
+    <div class="roll-command-section">
+        <input class="roll-command-element" id="roll-command-text" type="text" value="d20 + 5" disabled />
+        <a class="roll-command-element right-aligned" id="favorite-roll-button"
+        onmouseover="addClass(this.firstElementChild, 'bx-tada');"
+        onmouseout="removeClass(this.firstElementChild, 'bx-tada');"
+        onclick="toggleClass(this.firstElementChild, 'bxs-star'); toggleClass(this.firstElementChild, 'bx-star');">
+            <i class="bx bx-md bx-star"></i>
+        </a>
+    </div>
+    <!-- End of Title Section -->
+
+    <!-- Roll Options Section -->
+    <div class="roll-options-section">
+        <div class="roll-options-element">
+            <button id="dice-roll-button" onclick="rollDice();">Roll!</button>
+        </div>
+        <div class="roll-options-element lg-icon middle-align">
+            <a href=""><i class="bx bx-md bx-plus-circle"></i></a>
+        </div>
+    </div>
+    <!-- End of Roll Options Section -->
+    
+    <!-- Roll Selection Section -->
+    <div class="roll-selection-section">
+        <div class="roll-selection-element">
+            <input id="dice-count-num" type="number" maxlength="3" value="1" />
+        </div>
+        <div class="roll-selection-element">
+            <select name="die-type" id="die-type">
+                <option value="d20">D20</option>
+                <option value="d12">D12</option>
+                <option value="d8">D8</option>
+                <option value="d6">D6</option>
+                <option value="d4">D4</option>
+                <option value="d100">D100</option>
+            </select>
+        </div>
+        +
+        <div class="roll-selection-element">
+            <input id="roll-bonus-num" type="number" maxlength="3" value="1" />
+        </div>
+        <div class="roll-selection-element">
+            <a href="javascript:setAdvantage()"><i class="bx bx-chevrons-up"></i></a>
+            <a href="javascript:setDisadvantage()"><i class="bx bx-chevrons-down"></i></a>
+        </div>
+        <div class="roll-selection-element lg-icon">
+            <a href=""><i class='bx bx-md bx-list-plus' ></i></a>
+        </div>
+    </div>
+
+    <script src="assets/js/attribute_actions.js"></script>
+</body>
+
+</html>
