@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>d2ogether Dice Roller</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin ></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin ></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Metamorphous:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- External CSS Files -->
+    <link href="https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Title Section -->
+    <div class="title-section">
+        <div class="title-element">
+            <img id="dice-roll-image" class="dice-image-blank" src="assets/img/d20-dice-blank-100.png" >
+        </div>
+        <div class="title-element">
+            <h2>d2ogether dice roller</h2>
+        </div>
+    </div>
+    <!-- End of Title Section -->
+
+    <!-- Roll Command Section -->
+    <div class="roll-command-section">
+        <input class="roll-command-element" id="roll-command-text" type="text" value="d20" disabled />
+        <i class="bx bx-md bx-star right-aligned clickable-element" id="favorite-roll-button"
+            onclick="toggleClass(this, ['bxs-star', 'bx-star']);"> </i>
+    </div>
+    <!-- End of Roll Command Section -->
+
+    <!-- Roll Options Section -->
+    <div class="roll-options-section">
+        <div class="roll-options-element">
+            <button class="clickable-element" id="dice-roll-button" onclick="rollDice();">Roll!</button>
+        </div>
+        <div class="roll-options-element">
+            <i class="bx bx-md bx-add-to-queue clickable-element" id="running-tally-button"
+                onclick="toggleClass(this, ['bxs-add-to-queue', 'bx-add-to-queue']);"></i>
+        </div>
+    </div>
+    <!-- End of Roll Options Section -->
+    
+    <!-- Roll Selection Section -->
+    <div class="roll-selection-section">
+        <div class="roll-selection-element">
+            <input id="dice-count-num" type="number" maxlength="3" value="1" />
+        </div>
+        <div class="roll-selection-element">
+            <select name="die-type" id="die-type">
+                <option value="d20">D20</option>
+                <option value="d12">D12</option>
+                <option value="d8">D8</option>
+                <option value="d6">D6</option>
+                <option value="d4">D4</option>
+                <option value="d100">D100</option>
+            </select>
+        </div>
+        +
+        <div class="roll-selection-element">
+            <input id="roll-bonus-num" type="number" maxlength="3" value="0" />
+        </div>
+        <div class="roll-selection-element">
+            <img class="adv-icon clickable-element" id="pos-adv-icon" onclick="setAdvantage(this);" src="assets/img/1d20-advantage-50.png"></a>
+            <img class="adv-icon clickable-element" id="neg-adv-icon" onclick="setAdvantage(this);" src="assets/img/1d20-disadvantage-50.png"></a>
+        </div>
+        <div class="roll-selection-element">
+            <i class="bx bx-md bx-list-plus clickable-element"></i>
+        </div>
+    </div>
+    <!-- End of Roll Selection Section -->
+
+    <script src="assets/js/attribute_actions.js"></script>
+</body>
+
+</html>

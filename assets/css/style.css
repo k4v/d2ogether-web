@@ -1,0 +1,106 @@
+body * {
+    font-family: "Raleway", "Helvetica Neue", "Open Sans", sans-serif;
+    color: #000000;
+    vertical-align: middle;
+}
+
+[class*="-section"] {
+    padding-bottom: 15px;
+}
+
+[class*="-element"] {
+    display: inline;
+}
+
+.clickable-element {
+    cursor: pointer;
+}
+
+/*
+Title section
+*/
+.title-section {
+    text-align: center;
+}
+
+.title-section * {
+    font-family: "Metamorphous", "Open Sans", sans-serif;
+    font-size: 30px;
+    display: inline;
+}
+
+.title-section #dice-roll-image {
+    width: 75px;
+}
+
+/*
+Roll command section
+*/
+.roll-command-section {
+    width: 100%;
+    display: flex;
+    padding-bottom: 15px;
+}
+
+.roll-command-section input {
+    width: 100%;
+    background-color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.roll-command-section i {
+    flex: 0;
+    border-width: 1px;
+    border-color: #000000;
+    color: #006dcc;
+    text-align: center;
+    margin: 8px 0px;
+    float: right;
+}
+
+/*
+Roll options section
+*/
+#dice-roll-button, #dice-roll-button:focus {
+    background-color: #006dcc;
+    background-image: -moz-linear-gradient(top,#08c,#04c);
+    background-image: -webkit-linear-gradient(top,#08c,#04c);
+    border-radius: 4px;
+    color: #ffffff;
+    padding: 6px 14px 6px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#dice-roll-button:hover {
+    background-color: #0044cc;
+    background-image: none;
+}
+
+#dice-roll-button:active {
+    background-color: #002b80;
+    background-image: none;
+}
+
+/*
+Roll selection section
+*/
+.roll-selection-section {
+    padding-bottom: 15px;
+}
+
+.roll-selection-element * {
+    font-size: 30px;
+    text-align: right;
+}
+
+.roll-selection-element input {
+    width: 75px;
+}
+
+.roll-selection-element img {
+    opacity: 0.2;
+    width: 50px;
+}
