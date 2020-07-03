@@ -1,0 +1,41 @@
+/*
+Title section
+*/
+.title-section {
+    text-align: center;
+}
+
+.title-section * {
+    font-family: "Metamorphous", "Open Sans", sans-serif;
+    font-size: 30px;
+    display: inline;
+}
+
+.title-section #dice-roll-image {
+    width: 75px;
+}
+
+/*
+Roll options section
+*/
+
+#dice-roll-button, #dice-roll-button:focus {
+    background-color: #006dcc;
+    background-image: -moz-linear-gradient(top,#08c,#04c);
+    background-image: -webkit-linear-gradient(top,#08c,#04c);
+    border-radius: 4px;
+    color: #ffffff;
+    padding: 6px 14px 6px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#dice-roll-button:hover {
+    background-color: #0044cc;
+    background-image: none;
+}
+
+#dice-roll-button:active {
+    background-color: #002b80;
+    background-image: none;
+}

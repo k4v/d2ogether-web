@@ -1,0 +1,23 @@
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body * {
+	font-family: "Raleway", "Helvetica Neue", "Open Sans", sans-serif;
+	color: #000000;
+	vertical-align: middle;
+}
+
+[class*="-section"] {
+    padding-bottom: 15px;
+}
+
+[class*="-element"] {
+	display: inline;
+	margin-right: 5px;
+}
+
+.clickable-element {
+    cursor: pointer;
+}
