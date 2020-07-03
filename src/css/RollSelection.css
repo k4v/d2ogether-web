@@ -1,0 +1,30 @@
+/*
+Roll selection section
+*/
+.roll-selection-section {
+    padding-bottom: 15px;
+}
+
+.roll-selection-element * {
+    font-size: 25px;
+    text-align: right;
+}
+
+.roll-selection-element input {
+    width: 75px;
+}
+
+.roll-selection-element #roll-breakdown {
+    width: 50%;
+    text-align: center;
+}
+
+.roll-selection-element .adv-icon {
+    opacity: 0.2;
+    width: 40px;
+    margin: 0px 5px;
+}
+
+.roll-selection-element .pos-adv-icon, .roll-selection-element .neg-adv-icon {
+    opacity: 1.0;
+}
