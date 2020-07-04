@@ -6,8 +6,7 @@ import Roll from './Roll'
 
 import './css/App.css';
 
-import blank_dice from './img/d20-dice-blank-100.png';
-import rolling_dice from './img/d20-dice-rolling-100.gif';
+import title_logo from './img/D20.png';
 
 class App extends Component {
 
@@ -80,8 +79,6 @@ class App extends Component {
     }
 
     render() {
-        let dice_url = this.state.is_rolling ? rolling_dice : blank_dice;
-
         let roll_strings = [];
         for (let roll_layer of this.state.roll_layers) {
             roll_strings.push(roll_layer.getRollString());
@@ -92,7 +89,7 @@ class App extends Component {
                 <div className="title-section">
                     <div className="title-element">
                         <img id="dice-roll-image" className="dice-image-blank"
-                            src={dice_url} alt="Static D20" />
+                            src={title_logo} alt="Static D20" />
                     </div>
                     &nbsp;
                     <div className="title-element">
