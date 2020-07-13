@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import RollCommandSectionComponent from './RollCommandSection'
 import RollSelectionSectionComponent from './RollSelectionSection'
@@ -14,9 +15,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            roll_layers: [
-                new Roll()
-            ],
+            roll_layers: new Map([[uuidv4(), new Roll()]]),
             do_running_tally: false,
             roll_total: null,
             is_rolling: false
@@ -28,8 +27,9 @@ class App extends Component {
 
         let roll_total = (this.state.do_running_tally && this.state.roll_total !== null) ? this.state.roll_total : 0;
         
-        for (let i=0; i < this.state.roll_layers.length; ++i) {
-            roll_total += this.state.roll_layers[i].roll();
+        for (let [key, roll_layer] of this.state.roll_layers) {
+            roll_total += roll_layer.roll();
+            this.state.roll_layers.set(key, roll_layer);
         }
 
         this.setState({
@@ -44,25 +44,25 @@ class App extends Component {
     }
 
     addRollLayer = () => {
-        if (this.state.roll_layers.length === 10) {
+        if (this.state.roll_layers.size === 10) {
             return;
         }
 
         let updated_layers = this.state.roll_layers;
-        updated_layers.push(new Roll());
+        updated_layers.set(uuidv4(), new Roll());
 
         this.setState({roll_layers: updated_layers});
     }
 
     removeRollLayer = (layer_id) => {
-        if (this.state.roll_layers.length === 1) {
+        if (this.state.roll_layers.size === 1) {
             return;
         }
 
-        if (layer_id >= 0 && layer_id < this.state.roll_layers.length) {
+        if (this.state.roll_layers.has(layer_id)) {
             let updated_layers = this.state.roll_layers;
             // Remove layer
-            updated_layers.splice(layer_id, 1);
+            updated_layers.delete(layer_id);
 
             // Update state
             this.setState({
@@ -73,15 +73,25 @@ class App extends Component {
 
     changeRollSelection = (roll, layer_id) => {
         let updated_layers = this.state.roll_layers;
-        updated_layers[layer_id] = roll;
+        updated_layers.set(layer_id, roll);
 
         this.setState({roll_layers: updated_layers});
     }
 
     render() {
         let roll_strings = [];
-        for (let roll_layer of this.state.roll_layers) {
+        let roll_elements = [];
+        // eslint-disable-next-line
+        for (let [key, roll_layer] of this.state.roll_layers) {
             roll_strings.push(roll_layer.getRollString());
+
+            roll_elements.push(<RollSelectionSectionComponent
+                layer_index={key}
+                key={key}
+                roll={roll_layer}
+                onRemoveLayer={this.removeRollLayer}
+                onChangeRollSelection={this.changeRollSelection}
+            />);
         }
 
         return (
@@ -93,7 +103,7 @@ class App extends Component {
                     </div>
                     &nbsp;
                     <div className="title-element">
-                        <h2>&middot; D2ogether Dice Roller &middot;</h2>
+                        <h2>&middot; D2øgether Dice Roller &middot;</h2>
                     </div>
                 </div>
 
@@ -121,16 +131,7 @@ class App extends Component {
                     </div>
                 </div>
 
-                {
-                    this.state.roll_layers.map((layer, index) =>
-                        <RollSelectionSectionComponent
-                            layer_index={index}
-                            key={index}
-                            roll={layer}
-                            onRemoveLayer={this.removeRollLayer}
-                            onChangeRollSelection={this.changeRollSelection}
-                        />)
-                }
+                {roll_elements}
             </div>
         );
     }

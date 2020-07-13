@@ -4,28 +4,41 @@ Roll command section
 .roll-command-section {
     width: 100%;
     display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
     padding-bottom: 15px;
 }
 
 .roll-command-section input {
     background-color: #ffffff;
-    font-size: 25px;
-    font-weight: 600;
-    text-align: center;
     vertical-align: middle;
+    height: 2em;
 }
 
 .roll-command-section #roll-total-text {
-    flex: 0;
+    flex: none;
+    width: 4em;
+    height: 1.2em;
+    order: 1;
+    font-size: 40px;
     font-weight: 700;
+    text-align: center;
 }
 
 .roll-command-section #roll-command-text {
+    flex: 1 0;
     width: 100%;
+    order: 2;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: left;
+    padding: 0px 5px;
 }
 
 .roll-command-section i {
-    flex: 0;
+    flex: none;
+    order: 3;
     border-width: 1px;
     border-color: #000000;
     color: #006dcc;
