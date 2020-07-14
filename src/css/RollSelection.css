@@ -2,10 +2,15 @@
 Roll selection section
 */
 .roll-selection-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
     padding-bottom: 15px;
 }
 
-.roll-selection-element * {
+.roll-selection-element, .roll-selection-element * {
     font-size: 25px;
     text-align: right;
 }
@@ -14,8 +19,12 @@ Roll selection section
     width: 75px;
 }
 
+.roll-selection-element.expanding-size {
+    flex: 0 1 auto;
+    width: 100px;
+}
+
 .roll-selection-element #roll-breakdown {
-    width: 50%;
     text-align: center;
 }
 

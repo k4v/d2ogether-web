@@ -4,7 +4,7 @@ import {DICE_TYPES} from './Roll'
 
 import './css/RollSelection.css';
 
-import no_advantage_icon from './img/d20-dice-blank-100.png'
+import no_advantage_icon from './img/1d20-no-advantage-100.png'
 import advantage_icon from './img/1d20-advantage-50.png';
 import disadvantage_icon from './img/1d20-disadvantage-50.png';
 
@@ -41,7 +41,7 @@ class RollSelectionSectionComponent extends Component {
             default:
                 break;
         }
-
+        
         this.changeRollSelectionHandler(roll, this.state.layer_index);
     }
 
@@ -84,7 +84,7 @@ class RollSelectionSectionComponent extends Component {
                 </div>
                 &nbsp;
                 <div className="roll-selection-element">
-                    <select name="die-type" onChange={this.handleRollSelectionChange}>
+                    <select name="die-type" value={this.state.roll.die_type} onChange={this.handleRollSelectionChange}>
                         {dice_types}
                     </select>
                 </div>
@@ -104,7 +104,7 @@ class RollSelectionSectionComponent extends Component {
                         value={this.state.roll.roll_fill.roll_total == null ? "" : this.state.roll.roll_fill.roll_total}
                         disabled />
                 </div>
-                <div className="roll-selection-element">
+                <div className="roll-selection-element expanding-size">
                     <input id="roll-breakdown" type="text" value={this.state.roll.getRollResults()} disabled />
                 </div>
             </div>
