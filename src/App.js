@@ -17,6 +17,7 @@ class App extends Component {
         this.state = {
             roll_layers: new Map([[uuidv4(), new Roll()]]),
             do_running_tally: false,
+            current_roll: null,
             roll_total: null,
             is_rolling: false
         };
@@ -26,15 +27,17 @@ class App extends Component {
         this.setState({is_rolling: true});
 
         let roll_total = (this.state.do_running_tally && this.state.roll_total !== null) ? this.state.roll_total : 0;
+        let current_roll = 0;
         
         for (let [key, roll_layer] of this.state.roll_layers) {
-            roll_total += roll_layer.roll();
+            current_roll += roll_layer.roll();
             this.state.roll_layers.set(key, roll_layer);
         }
 
         this.setState({
             roll_layers: this.state.roll_layers,
-            roll_total: roll_total,
+            current_roll: current_roll,
+            roll_total: roll_total + current_roll,
             is_rolling: false
         });
     }
@@ -80,12 +83,12 @@ class App extends Component {
 
     render() {
         let roll_strings = [];
-        let roll_elements = [];
+        let roll_layers = [];
         // eslint-disable-next-line
         for (let [key, roll_layer] of this.state.roll_layers) {
             roll_strings.push(roll_layer.getRollString());
 
-            roll_elements.push(<RollSelectionSectionComponent
+            roll_layers.push(<RollSelectionSectionComponent
                 layer_index={key}
                 key={key}
                 roll={roll_layer}
@@ -109,6 +112,8 @@ class App extends Component {
 
                 <RollCommandSectionComponent
                     roll_strings={roll_strings}
+                    tally_mode={this.state.do_running_tally}
+                    current_roll={this.state.current_roll}
                     roll_total={this.state.roll_total} />
                 
                 <div className="roll-options-section">
@@ -131,7 +136,7 @@ class App extends Component {
                     </div>
                 </div>
 
-                {roll_elements}
+                {roll_layers}
             </div>
         );
     }

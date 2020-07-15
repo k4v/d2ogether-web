@@ -24,6 +24,9 @@ class RollCommandSectionComponent extends Component {
                 <input className="roll-command-element" id="roll-total-text" type="text"
                     value={this.props.roll_total === null ? "" : this.props.roll_total}
                     disabled />
+                <input className="roll-command-element" id="current-roll-text" type="text"
+                    value={this.props.current_roll === null ? "" : this.props.current_roll}
+                    disabled={true} style={{display: this.props.tally_mode ? "inline" : "none"}} />
                 <input className="roll-command-element" id="roll-command-text" type="text"
                     value={this.props.roll_strings.join(' + ')} disabled />
                 <i className={"right-aligned clickable-element bx bx-md " + star_icon_class}
