@@ -72,7 +72,7 @@ class RollSelectionSectionComponent extends Component {
         );
 
         return (
-            <div className="roll-options-section">
+            <div className="roll-selection-section">
                 <div className="roll-selection-element">
                     <i
                         className="bx bxs-minus-circle clickable-element" style={{color:"#D90000"}}
@@ -105,7 +105,7 @@ class RollSelectionSectionComponent extends Component {
                         disabled />
                 </div>
                 <div className="roll-selection-element expanding-size">
-                    <input id="roll-breakdown" type="text" value={this.state.roll.getRollResults()} disabled />
+                    <span id="roll-breakdown">{this.state.roll.getRollResults()}</span>
                 </div>
             </div>
         );

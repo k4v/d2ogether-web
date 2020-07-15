@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const DICE_TYPES = {
     D20: 20,
     D12: 12,
@@ -69,11 +71,30 @@ class Roll {
     }
 
     getRollResults = () => {
-        let roll_results = "";
+        let roll_results = [];
+        
+        const outer_span_divider = " + ";
+        const inner_span_divider = " / ";
+        const span_open = "{";
+        const span_close = "}";
+
         for (let i=0; i<this.roll_fill.roll_values.length; ++i) {
-            roll_results += this.roll_fill.roll_values[i].join('/');
+            let roll_result = [];
+            for (let j=0; j<this.roll_fill.roll_values[i].length; ++j) {
+                roll_result.push(<span className={"roll-value-option-" + this.die_type}>{this.roll_fill.roll_values[i][j]}</span>);
+
+                if (j < this.roll_fill.roll_values[i].length - 1) {
+                    roll_result.push(<span className="roll-span-divider">{inner_span_divider}</span>)
+                }
+            }
+
+            roll_results.push(
+                <span className="roll-value-options">{span_open}
+                    {roll_result}
+                {span_close}</span>);
+
             if (i < this.roll_fill.roll_values.length - 1) {
-                roll_results += ", ";
+                roll_results.push(<span className="roll-span-divider">{outer_span_divider}</span>)
             }
         }
         
