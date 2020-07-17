@@ -18,7 +18,7 @@ Roll selection section
 .roll-selection-element.expanding-size {
     flex: 1 1 auto;
     width: 100%;
-    height: 1.6em;
+    height: 2em;
     text-align: left;
     overflow-x: auto;
     overflow-y: auto;
@@ -44,42 +44,46 @@ Roll selection section
 }
 
 .roll-value-options, .roll-value-options * {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 [class*="roll-value-option-"] {
     display: inline-block;
-    width: 1.6em;
-    height: 1.6em;
-    padding-top: 0.3em;
+    width: 2em;
+    height: 2em;
     background-repeat: no-repeat;
     background-size: contain;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    font-weight: 400;
     text-align: center;
+    padding-top: 0.3em;
 }
 
 .roll-value-option-20 {
-    background-image: url('../img/D20.png');
+    background-image: url('../img/D20-border.png');
 }
 
 .roll-value-option-12 {
-    background-image: url('../img/D12.png');
+    background-image: url('../img/D12-border.png');
 }
 
 .roll-value-option-10 {
-    background-image: url('../img/D10.png');
+    background-image: url('../img/D10-border.png');
 }
 
 .roll-value-option-8 {
-    background-image: url('../img/D8.png');
+    background-image: url('../img/D8-border.png');
 }
 
 .roll-value-option-6 {
-    background-image: url('../img/D6.png');
+    background-image: url('../img/D6-border.png');
 }
 
 .roll-value-option-4 {
-    background-image: url('../img/D4.png');
+    background-image: url('../img/D4-border.png');
+}
+
+.roll-value-option-100 {
+    background-image: url('../img/D10-border.png');
 }
