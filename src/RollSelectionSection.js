@@ -100,7 +100,7 @@ class RollSelectionSectionComponent extends Component {
                 </div>
                 <span className="roll-selection-element">&nbsp;=&nbsp;</span>
                 <div className="roll-selection-element">
-                    <input id="roll-total-value" type="text"
+                    <input className="roll-total-value" type="text"
                         value={this.state.roll.roll_fill.roll_total == null ? "" : this.state.roll.roll_fill.roll_total}
                         disabled />
                 </div>

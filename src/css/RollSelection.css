@@ -28,7 +28,7 @@ Roll selection section
     width: 2.5em;
 }
 
-.roll-selection-element #roll-total-value {
+.roll-selection-element .roll-total-value {
     font-weight: 700;
     text-align: center;
 }
