@@ -14,17 +14,25 @@ class App extends Component {
     constructor(props) {
         super(props);
 
+        this.MAX_LAYER_COUNT = 10;
+        this.MIN_LAYER_COUNT = 1;
+
         this.state = {
             roll_layers: new Map([[uuidv4(), new Roll()]]),
             do_running_tally: false,
             current_roll: null,
             roll_total: null,
+            is_adding_layer: false,
             is_rolling: false
         };
     }
 
     rollDice = () => {
-        this.setState({is_rolling: true});
+        if (this.state.is_rolling) {
+            return;
+        } else {
+            this.setState({is_rolling: true});
+        }
 
         let roll_total = (this.state.do_running_tally && this.state.roll_total !== null) ? this.state.roll_total : 0;
         let current_roll = 0;
@@ -47,18 +55,23 @@ class App extends Component {
     }
 
     addRollLayer = () => {
-        if (this.state.roll_layers.size === 10) {
+        if (this.state.is_adding_layers || this.state.roll_layers.size >= this.MAX_LAYER_COUNT) {
             return;
+        } else {
+            this.setState({is_adding_layers: true});
         }
 
         let updated_layers = this.state.roll_layers;
         updated_layers.set(uuidv4(), new Roll());
 
-        this.setState({roll_layers: updated_layers});
+        this.setState({
+            roll_layers: updated_layers,
+            is_adding_layers: false
+        });
     }
 
     removeRollLayer = (layer_id) => {
-        if (this.state.roll_layers.size === 1) {
+        if (this.state.roll_layers.size <= this.MIN_LAYER_COUNT) {
             return;
         }
 
@@ -120,7 +133,7 @@ class App extends Component {
                     <div className="roll-options-element">
                         <button className="clickable-element"
                         id="dice-roll-button" title="Roll ALL the dice!"
-                        onClick={() => this.rollDice()} disabled={this.state.is_rolling} type="button">Roll</button>
+                        onClick={() => this.rollDice()} type="button">Roll</button>
                     </div>
                     <div className="roll-options-element">
                         <i className={"clickable-element bx bx-md " + (this.state.do_running_tally ? "bxs-layer-plus": "bx-layer-plus")}
